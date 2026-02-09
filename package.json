@@ -1,0 +1,16 @@
+{
+  "name": "agentic-copilot-test-app",
+  "version": "1.0.0",
+  "description": "AgenticCopilot test application for testing various features",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": ["agentic", "copilot", "test"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
