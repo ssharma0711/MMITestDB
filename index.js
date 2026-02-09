@@ -10,6 +10,7 @@ app.use(express.static('public'));
 
 // Simple in-memory storage for testing
 let testData = [];
+let nextId = 1;
 
 // API Routes
 app.get('/api/health', (req, res) => {
@@ -27,7 +28,7 @@ app.post('/api/data', (req, res) => {
   }
   
   const newItem = {
-    id: testData.length + 1,
+    id: nextId++,
     item: item,
     timestamp: new Date().toISOString()
   };

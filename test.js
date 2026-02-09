@@ -55,11 +55,22 @@ test('Empty items should be invalid', () => {
   assertEqual(isValid, false, 'Empty item should fail validation');
 });
 
-// Test 5: ID generation
-test('IDs should increment correctly', () => {
-  const data = [{ id: 1 }, { id: 2 }];
-  const newId = data.length + 1;
-  assertEqual(newId, 3, 'New ID should be 3');
+// Test 5: ID generation with counter
+test('IDs should use a counter for uniqueness', () => {
+  let nextId = 1;
+  const data = [];
+  
+  // Add two items
+  data.push({ id: nextId++ });
+  data.push({ id: nextId++ });
+  
+  // Delete first item
+  data.splice(0, 1);
+  
+  // Add another item - should get ID 3, not 2
+  const newId = nextId++;
+  assertEqual(newId, 3, 'New ID should be 3 even after deletion');
+  assertEqual(data.length, 1, 'Data should have 1 item after deletion');
 });
 
 console.log(`\n${testsPassed}/${testsRun} tests passed`);
